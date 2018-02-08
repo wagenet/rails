@@ -48,7 +48,7 @@ module ActiveRecord
       # This method exists to avoid the expensive primary_key check internally, without
       # breaking compatibility with the write_attribute API
       def _write_attribute(attr_name, value) # :nodoc:
-        if attr_name.to_s == "updated_at"
+        if attr_name.to_s == "updated_at" && self.class.name =~ /App$/
           puts "*** _write_attribute(#{attr_name}, #{value})"
           puts caller
         end
