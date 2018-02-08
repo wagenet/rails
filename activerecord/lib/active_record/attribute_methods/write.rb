@@ -48,6 +48,8 @@ module ActiveRecord
       # This method exists to avoid the expensive primary_key check internally, without
       # breaking compatibility with the write_attribute API
       def _write_attribute(attr_name, value) # :nodoc:
+        puts "*** _write_attribute(#{attr_name}, #{value})"
+        puts caller
         @attributes.write_from_user(attr_name.to_s, value)
         value
       end
